@@ -1,9 +1,7 @@
-import Demo from "./Demo";
-
 const App = () => {
   return (
     <>
-      <Demo />
+      <h1> This is Main Page </h1>
     </>
   );
 };
