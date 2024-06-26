@@ -1,17 +1,20 @@
-import { useCallback } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-    console.log("Form submitted");
-  }, []);
-
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Name" />
-        <button>Submit</button>
-      </form>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 };
