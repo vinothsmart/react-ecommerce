@@ -1,30 +1,19 @@
 import { useRef } from "react";
 
 const App = () => {
-  let firstNameRef,
-    lastNameRef = useRef();
-
+  const textRef = useRef();
   const handleClick = () => {
-    const firstName = firstNameRef.value;
-    const lastName = lastNameRef.value;
-    alert(firstName + " " + lastName);
+    textRef.current.className = "text-danger";
   };
 
   return (
     <>
-      <input
-        type="text"
-        ref={(a) => (firstNameRef = a)}
-        placeholder="FirstName"
-      />
-      <br />
-      <input
-        type="text"
-        ref={(a) => (lastNameRef = a)}
-        placeholder="LastName"
-      />{" "}
-      <br />
-      <button onClick={handleClick}>Click me</button>
+      <h1 className="text-success" ref={textRef}>
+        This is Head line
+      </h1>
+      <button className="btn btn-primary" onClick={handleClick}>
+        Click Me
+      </button>
     </>
   );
 };
