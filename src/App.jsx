@@ -1,10 +1,15 @@
 import Hero from "./component/Hero";
 
 const App = () => {
+  const item = {
+    name: "vinoth",
+    age: 25,
+    city: "chennai",
+  };
   return (
     <>
       <h1>Login status</h1>
-      <Hero title="Learn with vinoth" desc="In detailed Information" />
+      <Hero item={item} />
     </>
   );
 };
