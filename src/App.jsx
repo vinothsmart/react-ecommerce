@@ -4,14 +4,24 @@ import Header from "./component/Header";
 import Hero from "./component/Hero";
 
 const App = () => {
-  let marks = 79;
+  let marks = 81;
   return (
     <>
       {/* <Header />
       <Hero />
       <Contact />
       <Footer /> */}
-      {marks >= 80 ? <h1>Grade A</h1> : <h1>Grade B</h1>}
+      {(() => {
+        if (marks >= 80 && marks <= 100) {
+          return <h1>A+</h1>;
+        } else if (marks >= 70 && marks <= 79) {
+          return <h1>A</h1>;
+        } else if (marks >= 60 && marks <= 69) {
+          return <h1>A-</h1>;
+        } else {
+          return <h1>F</h1>;
+        }
+      })()}
     </>
   );
 };
