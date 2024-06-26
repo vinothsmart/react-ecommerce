@@ -4,7 +4,7 @@ const ContactPage = () => {
   return (
     <>
       <Menu />
-      ContactPage
+      <h1>ContactPage</h1>
     </>
   );
 };
