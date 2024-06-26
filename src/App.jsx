@@ -1,9 +1,16 @@
+import { useRef } from "react";
+
 const App = () => {
-  const myHeadline = document.getElementById("myHeadline");
-  myHeadline.innerHTML = "Hello World!";
+  const myHeadline = useRef();
+  myHeadline.current.innerHTML = "Hi Vinoth using useRef!";
+
+  const handleClick = () => {
+    myHeadline.current.innerHTML = "Hello Vinoth";
+  };
   return (
     <>
-      <h1 id="myHeadline"></h1>
+      <h1 ref={myHeadline}></h1>
+      <button onClick={handleClick}>Click me</button>
     </>
   );
 };
