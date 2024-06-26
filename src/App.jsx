@@ -1,13 +1,6 @@
 const App = () => {
-  const status = false;
-  switch (status) {
-    case true:
-      return <button>Logout</button>;
-    case false:
-      return <button>Login</button>;
-    default:
-      return null;
-  }
+  let status = true;
+  return <>{status ? <button>Logout</button> : <button>Login</button>}</>;
 };
 
 export default App;
