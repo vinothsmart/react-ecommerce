@@ -1,15 +1,13 @@
-const LoginButtonStatus = (status) => {
-  return <button>{status ? "Logout" : "Login"}</button>;
-};
-
 const App = () => {
-  const status = true;
-  return (
-    <>
-      <h1>Login Status</h1>
-      {LoginButtonStatus(status)}
-    </>
-  );
+  const status = false;
+  switch (status) {
+    case true:
+      return <button>Logout</button>;
+    case false:
+      return <button>Login</button>;
+    default:
+      return null;
+  }
 };
 
 export default App;
