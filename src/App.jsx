@@ -3,7 +3,8 @@ import { useRef } from "react";
 const App = () => {
   const textRef = useRef();
   const handleClick = () => {
-    textRef.current.className = "text-danger";
+    textRef.current.classList.remove("text-success");
+    textRef.current.classList.add("text-danger");
   };
 
   return (
