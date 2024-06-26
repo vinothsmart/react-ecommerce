@@ -3,7 +3,13 @@ const App = () => {
   return (
     <>
       <h1>Login status</h1>
-      {status && <button>Logout</button>}
+      {(() => {
+        if (status) {
+          return <button>Logout</button>;
+        } else {
+          return <button>Login</button>;
+        }
+      })()}
     </>
   );
 };
