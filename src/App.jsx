@@ -1,12 +1,17 @@
 import { useCallback } from "react";
 
 const App = () => {
-  const handleClick = useCallback(() => {
-    alert("hai");
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();
+    console.log("Form submitted");
   }, []);
+
   return (
     <>
-      <button onClick={handleClick}>Submit</button>
+      <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="Name" />
+        <button>Submit</button>
+      </form>
     </>
   );
 };
