@@ -1,15 +1,14 @@
+import { useCallback } from "react";
 import Hero from "./component/Hero";
 
 const App = () => {
-  const item = {
-    name: "vinoth",
-    age: 25,
-    city: "chennai",
-  };
+  const handleClick = useCallback(() => {
+    alert("Login successful");
+  }, []);
   return (
     <>
       <h1>Login status</h1>
-      <Hero item={item} />
+      <Hero handleClick={handleClick} />
     </>
   );
 };
