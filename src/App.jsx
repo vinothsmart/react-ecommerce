@@ -1,14 +1,17 @@
 import { useRef } from "react";
 
 const App = () => {
-  let myHeadline = useRef();
+  const myImage = useRef();
 
   const handleClick = () => {
-    myHeadline.innerHTML = "Hello Vinoth";
+    myImage.current.src = "https://placehold.co/600x400/000000/FFF";
+    myImage.current.setAttribute("height", "200");
+    myImage.current.setAttribute("width", "300");
   };
+
   return (
     <>
-      <h1 ref={(h1) => (myHeadline = h1)}></h1>
+      <img ref={myImage} src="https://placehold.co/600x400" />
       <button onClick={handleClick}>Click me</button>
     </>
   );
