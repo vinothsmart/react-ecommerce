@@ -1,5 +1,12 @@
+import Menu from "../component/Menu";
+
 const AboutPage = () => {
-  return <div>Aboutpage</div>;
+  return (
+    <>
+      <Menu />
+      Aboutpage
+    </>
+  );
 };
 
 export default AboutPage;

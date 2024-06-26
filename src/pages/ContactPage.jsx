@@ -1,5 +1,12 @@
+import Menu from "../component/Menu";
+
 const ContactPage = () => {
-  return <div>ContactPage</div>;
+  return (
+    <>
+      <Menu />
+      ContactPage
+    </>
+  );
 };
 
 export default ContactPage;
