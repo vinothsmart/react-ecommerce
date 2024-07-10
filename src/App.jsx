@@ -1,27 +1,16 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useState } from "react";
 
 const App = () => {
-  const APIData = useRef(null);
-  const pageRef = useRef();
+  const [number, setNumber] = useState(0);
 
-  const fetchData = useCallback(async () => {
-    const result = await fetch("https://dummyjson.com/products");
-    APIData.current = await result.json();
-  }, []);
-
-  const showData = useCallback(() => {
-    pageRef.current.textContent = JSON.stringify(APIData.current, null, 2);
+  const handleIncrement = useCallback(() => {
+    setNumber((prev) => prev + 1);
   }, []);
 
   return (
     <>
-      <p ref={pageRef}></p>
-      <button className="btn btn-primary mt-2 me-2" onClick={fetchData}>
-        Call API
-      </button>
-      <button className="btn btn-primary mt-2" onClick={showData}>
-        Show Data
-      </button>
+      <h1>Number: {number}</h1>
+      <button onClick={handleIncrement}>Increment</button>
     </>
   );
 };
