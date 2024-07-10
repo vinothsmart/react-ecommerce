@@ -1,19 +1,26 @@
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 
 const App = () => {
-  const textRef = useRef();
-  const handleClick = () => {
-    textRef.current.classList.remove("text-success");
-    textRef.current.classList.add("text-danger");
-  };
+  const APIData = useRef(null);
+  const pageRef = useRef();
+
+  const fetchData = useCallback(async () => {
+    const result = await fetch("https://dummyjson.com/products");
+    APIData.current = await result.json();
+  }, []);
+
+  const showData = useCallback(() => {
+    pageRef.current.textContent = JSON.stringify(APIData.current, null, 2);
+  }, []);
 
   return (
     <>
-      <h1 className="text-success" ref={textRef}>
-        This is Head line
-      </h1>
-      <button className="btn btn-primary" onClick={handleClick}>
-        Click Me
+      <p ref={pageRef}></p>
+      <button className="btn btn-primary mt-2 me-2" onClick={fetchData}>
+        Call API
+      </button>
+      <button className="btn btn-primary mt-2" onClick={showData}>
+        Show Data
       </button>
     </>
   );
