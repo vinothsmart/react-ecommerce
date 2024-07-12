@@ -1,25 +1,23 @@
 import { useCallback, useState } from "react";
+import Item from "./Item";
 
 const App = () => {
-  const [names, setNames] = useState({
-    key1: "value1",
-    key2: "value2",
-    key3: "value3",
-  });
+  const [list, setList] = useState([]);
+  const [item, setItem] = useState("");
 
-  const handleChange = useCallback(() => {
-    setNames((prevNames) => {
-      return {
-        ...prevNames,
-        key1: "new value",
-      };
-    });
+  const handleChange = useCallback((e) => {
+    setItem(e.target.value);
   }, []);
+
+  const handleClick = useCallback(() => {
+    setList((prev) => [...prev, item]);
+  }, [item]);
 
   return (
     <>
-      <h1>{names.key1}</h1>
-      <button onClick={handleChange}>Change value</button>
+      <input type="text" placeholder="name" onChange={handleChange} />
+      <button onClick={handleClick}>Add</button>
+      <Item list={list} />
     </>
   );
 };
