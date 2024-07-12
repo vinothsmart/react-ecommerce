@@ -8,16 +8,17 @@ const App = () => {
   });
 
   const handleChange = useCallback(() => {
-    setNames({
-      key1: "value1 changed",
-      key2: "value2 changed",
-      key3: "value3 changed",
+    setNames((prevNames) => {
+      return {
+        ...prevNames,
+        key1: "new value",
+      };
     });
   }, []);
 
   return (
     <>
-      <h1>{names.key2}</h1>
+      <h1>{names.key1}</h1>
       <button onClick={handleChange}>Change value</button>
     </>
   );
