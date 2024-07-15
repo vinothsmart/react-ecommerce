@@ -15,6 +15,7 @@ const App = () => {
 
   return (
     <>
+      <p>{list.length}</p>
       <input type="text" placeholder="name" onChange={handleChange} />
       <button onClick={handleClick}>Add</button>
       <Item list={list} />
