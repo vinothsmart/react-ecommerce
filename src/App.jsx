@@ -13,9 +13,18 @@ const App = () => {
     setList((prev) => [...prev, item]);
   }, [item]);
 
+  const handleRemove = useCallback(
+    (selectedIndex) => () => {
+      setList((prev) => prev.filter((_, i) => i !== selectedIndex));
+      // list.splice(selectedIndex, 1);
+      // setList([...list]);
+    },
+    []
+  );
+
   return (
     <>
-      <ItemList list={list} />
+      <ItemList list={list} handleRemove={handleRemove} />
       <input type="text" placeholder="name" onChange={handleChange} />
       <button onClick={handleClick}>Add</button>
     </>

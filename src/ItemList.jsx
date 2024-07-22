@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const ItemList = ({ list }) => {
+const ItemList = ({ list, handleRemove }) => {
   return (
     <table>
       <tbody>
@@ -9,7 +9,7 @@ const ItemList = ({ list }) => {
             <tr key={index}>
               <td>{item}</td>
               <td>
-                <button>Remove</button>
+                <button onClick={handleRemove(index)}>Remove</button>
               </td>
             </tr>
           ))
@@ -23,6 +23,7 @@ const ItemList = ({ list }) => {
 
 ItemList.propTypes = {
   list: PropTypes.array.isRequired,
+  handleRemove: PropTypes.func.isRequired,
 };
 
 export default ItemList;
