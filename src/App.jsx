@@ -8,10 +8,10 @@ const App = () => {
     }
     console.log(data);
   };
-  
+
   return (
     <div className="container">
-      <form onSubmit={}>
+      <form onSubmit={handleSumbit}>
         <input type="text" name="firstName" placeholder="First Name" />
         <input type="text" name="lastName" placeholder="Last Name" />
         <select name="city">
@@ -19,8 +19,8 @@ const App = () => {
           <option value="delhi">Delhi</option>
           <option value="mumbai">Mumbai</option>
         </select>
-        <input type="radio" name="gender" /> Male
-        <input type="radio" name="gender" /> Female
+        <input type="radio" name="gender" value="male" /> Male
+        <input type="radio" name="gender" value="female" /> Female
         <br />
         <button type="submit">Submit</button>
       </form>
