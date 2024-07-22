@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import Item from "./Item";
+import ItemList from "./ItemList";
 
 const App = () => {
   const [list, setList] = useState([]);
@@ -15,10 +15,9 @@ const App = () => {
 
   return (
     <>
-      <p>{list.length}</p>
+      <ItemList list={list} />
       <input type="text" placeholder="name" onChange={handleChange} />
       <button onClick={handleClick}>Add</button>
-      <Item list={list} />
     </>
   );
 };
