@@ -1,33 +1,30 @@
-import { useCallback, useState } from "react";
-import ItemList from "./ItemList";
-
 const App = () => {
-  const [list, setList] = useState([]);
-  const [item, setItem] = useState("");
-
-  const handleChange = useCallback((e) => {
-    setItem(e.target.value);
-  }, []);
-
-  const handleClick = useCallback(() => {
-    setList((prev) => [...prev, item]);
-  }, [item]);
-
-  const handleRemove = useCallback(
-    (selectedIndex) => () => {
-      setList((prev) => prev.filter((_, i) => i !== selectedIndex));
-      // list.splice(selectedIndex, 1);
-      // setList([...list]);
-    },
-    []
-  );
-
+  const handleSumbit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = {};
+    for (let [key, value] of formData.entries()) {
+      data[key] = value;
+    }
+    console.log(data);
+  };
+  
   return (
-    <>
-      <ItemList list={list} handleRemove={handleRemove} />
-      <input type="text" placeholder="name" onChange={handleChange} />
-      <button onClick={handleClick}>Add</button>
-    </>
+    <div className="container">
+      <form onSubmit={}>
+        <input type="text" name="firstName" placeholder="First Name" />
+        <input type="text" name="lastName" placeholder="Last Name" />
+        <select name="city">
+          <option value="">Choose City</option>
+          <option value="delhi">Delhi</option>
+          <option value="mumbai">Mumbai</option>
+        </select>
+        <input type="radio" name="gender" /> Male
+        <input type="radio" name="gender" /> Female
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 };
 
