@@ -1,10 +1,22 @@
-import { useEffect } from "react";
+import { useCallback } from "react";
+import { useEffect, useState } from "react";
 
 const App = () => {
-  useEffect(() => {
-    console.log("Hi Vinoth");
+  const [product, setProduct] = useState([]);
+
+  const fetchProductDetail = useCallback(() => {
+    fetch("https://dummyjson.com/products/1").then((response) =>
+      response.json().then((data) => {
+        setProduct(data);
+      })
+    );
   }, []);
-  return <div>App</div>;
+
+  useEffect(() => {
+    fetchProductDetail();
+  }, [fetchProductDetail]);
+
+  return <div>{JSON.stringify(product)}</div>;
 };
 
 export default App;
