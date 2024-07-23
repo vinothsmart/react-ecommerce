@@ -1,38 +1,10 @@
-import { useCallback } from "react";
-import { useState } from "react";
-import UserForm from "./component/UserForm";
+import { useEffect } from "react";
 
 const App = () => {
-  const [formData, setFromData] = useState({
-    firstName: "",
-    lastName: "",
-    city: "",
-    gender: "",
-  });
-
-  const handleChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setFromData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  useEffect(() => {
+    console.log("Hi Vinoth");
   }, []);
-
-  const handleSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
-      console.log(formData);
-    },
-    [formData]
-  );
-
-  return (
-    <UserForm
-      formData={formData}
-      handleChange={handleChange}
-      handleSubmit={handleSubmit}
-    />
-  );
+  return <div>App</div>;
 };
 
 export default App;
