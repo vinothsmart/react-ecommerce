@@ -1,4 +1,6 @@
+import { useCallback } from "react";
 import { useState } from "react";
+import UserForm from "./component/UserForm";
 
 const App = () => {
   const [formData, setFromData] = useState({
@@ -8,48 +10,28 @@ const App = () => {
     gender: "",
   });
 
-  const handleSumbit = (e) => {
-    e.preventDefault();
-  };
+  const handleChange = useCallback((e) => {
+    const { name, value, type, checked } = e.target;
+    setFromData((prevData) => ({
+      ...prevData,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  }, []);
+
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      console.log(formData);
+    },
+    [formData]
+  );
 
   return (
-    <div className="container mt-5">
-      <form onSubmit={handleSumbit}>
-        <input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          value={formData.firstName}
-        />
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          value={formData.lastName}
-        />
-        <select name="city" value={formData.city}>
-          <option value="">Choose City</option>
-          <option value="delhi">Delhi</option>
-          <option value="mumbai">Mumbai</option>
-        </select>
-        <input
-          checked={formData.gender === "male"}
-          type="radio"
-          name="gender"
-          value="male"
-        />
-        Male
-        <input
-          checked={formData.gender === "female"}
-          type="radio"
-          name="gender"
-          value="female"
-        />
-        Female
-        <br />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <UserForm
+      formData={formData}
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+    />
   );
 };
 
