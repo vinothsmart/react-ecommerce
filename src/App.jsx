@@ -11,10 +11,10 @@ const App = () => {
   });
 
   const handleChange = useCallback((e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFromData((prevData) => ({
       ...prevData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: value,
     }));
   }, []);
 
